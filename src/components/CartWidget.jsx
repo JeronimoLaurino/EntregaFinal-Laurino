@@ -1,15 +1,18 @@
 import React from 'react';
-import { BsCart } from 'react-icons/bs'; // Importar ícono de carrito
-import './CartWidget.css'; // Archivo de estilos opcional
+import { BsCart } from 'react-icons/bs';
+import './CartWidget.css';
 
 const CartWidget = () => {
-  const itemCount = 5; // Número fijo de elementos en el carrito
+  const cartItems = [
+    { id: 1, name: 'Blue Label Whiskey', quantity: 2 },
+    { id: 2, name: 'Red Label Whiskey', quantity: 1 }
+  ];
 
   return (
     <div className="cart-widget">
       <BsCart size={24} />
-      {itemCount > 0 && (
-        <span className="cart-badge">{itemCount}</span>
+      {cartItems.length > 0 && (
+        <span className="cart-badge">{cartItems.length}</span>
       )}
     </div>
   );

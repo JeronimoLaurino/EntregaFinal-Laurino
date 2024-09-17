@@ -1,0 +1,17 @@
+.cart-page {
+    padding: 20px;
+  }
+  
+  .cart-items {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cart-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  h2 {
+    margin-top: 20px;
+  }
