@@ -1,27 +1,31 @@
 import React from 'react';
-import './CartPage.css';
+import { Link } from 'react-router-dom';
+import '../styles/CartPage.css';
 
-const CartPage = () => {
-  const cartItems = [
-    { id: 1, name: 'Blue Label Whiskey', quantity: 2, price: 100 },
-    
-  ];
-
-  const total = cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
+const CartPage = ({ cartItems, onCheckout }) => {
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className="cart-page">
-      <h1>Carrito de Compras</h1>
-      <ul className="cart-items">
-        {cartItems.map(item => (
-          <li key={item.id} className="cart-item">
-            <span>{item.name}</span>
-            <span>Cantidad: {item.quantity}</span>
-            <span>Precio: ${item.price * item.quantity}</span>
-          </li>
-        ))}
-      </ul>
-      <h2>Total: ${total}</h2>
+      <h1>Tu Carrito</h1>
+      {cartItems.length === 0 ? (
+        <p>No hay productos en el carrito.</p>
+      ) : (
+        <div>
+          {cartItems.map(item => (
+            <div key={item.id} className="cart-item">
+              <img src={item.image} alt={item.name} />
+              <h2>{item.name}</h2>
+              <p>Cantidad: {item.quantity}</p>
+              <p>Precio: ${item.price}</p>
+            </div>
+          ))}
+          <h2>Total: ${totalPrice}</h2>
+          <Link to="/checkout">
+            <button className="checkout-button">Proceder al Checkout</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

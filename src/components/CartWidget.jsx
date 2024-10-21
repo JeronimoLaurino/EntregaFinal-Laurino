@@ -1,19 +1,12 @@
 import React from 'react';
-import { BsCart } from 'react-icons/bs';
-import './CartWidget.css';
+import { FaShoppingCart } from 'react-icons/fa';
+import '../styles/CartWidget.css';
 
-const CartWidget = () => {
-  const cartItems = [
-    { id: 1, name: 'Blue Label Whiskey', quantity: 2 },
-    { id: 2, name: 'Red Label Whiskey', quantity: 1 }
-  ];
-
+const CartWidget = ({ cartCount }) => {
   return (
     <div className="cart-widget">
-      <BsCart size={24} />
-      {cartItems.length > 0 && (
-        <span className="cart-badge">{cartItems.length}</span>
-      )}
+      <FaShoppingCart />
+      {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
     </div>
   );
 };

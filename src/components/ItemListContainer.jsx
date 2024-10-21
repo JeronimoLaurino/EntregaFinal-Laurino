@@ -1,28 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import './ItemListContainer.css';
-
 import blueLabel from '../assets/blueLabel.webp';
 import redLabel from '../assets/redLabel.webp';
 import blackLabel from '../assets/blackLabel.webp';
+import '../styles/ItemListContainer.css';
 
 const fetchItems = async (categoryId) => {
   const data = [
-    {
-      id: 'blueLabel',
-      name: 'Johnnie Walker Blue Label',
-      image: blueLabel
-    },
-    {
-      id: 'redLabel',
-      name: 'Johnnie Walker Red Label',
-      image: redLabel
-    },
-    {
-      id: 'blackLabel',
-      name: 'Johnnie Walker Black Label',
-      image: blackLabel
-    }
+    { id: 'blueLabel', name: 'Johnnie Walker Blue Label', image: blueLabel },
+    { id: 'redLabel', name: 'Johnnie Walker Red Label', image: redLabel },
+    { id: 'blackLabel', name: 'Johnnie Walker Black Label', image: blackLabel }
   ];
   return categoryId ? data.filter(item => item.id === categoryId) : data;
 };
@@ -48,7 +35,7 @@ const ItemListContainer = ({ greeting }) => {
             <img src={item.image} alt={item.name} className="item-image" />
             <div className="item-details">
               <h2>{item.name}</h2>
-              <Link to={`/item/${item.id}`} className="btn btn-primary">Ver Detalles</Link>
+              <Link to={`/product/${item.id}`} className="btn btn-primary">Ver Detalles</Link>
             </div>
           </div>
         ))}
